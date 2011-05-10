@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset="utf-8">
+  <title>Method Namer</title>
+  <meta name="description" content="A random method name generator for programmers, inspired by classnamer.com">
+  <meta name="keywords" description="class, method, object-oriented, agile, architecture, object orientation solves all the problems in the world">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="methodnamer-min.js"></script>
+  <script type="text/javascript" src="springGenerator-min.js"></script>
+  <script type="text/javascript" src="jdkGenerator-min.js"></script>
+  <link href="methodnamer.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.codeblock').text(generateTerribleName());
+
+      $('#generateName').click(function() {
+          var genFun = undefined;
+          var t = $('#generatorType')[0].value;
+
+          if (t === 'spring') {
+              genFun = generateSpringName;
+          } else if (t === 'jdk') {
+              genFun = generateJDKName;
+          } else if (t === 'horrible') {
+              genFun = generateTerribleName;
+          }
+          $('.codeblock').text(genFun());
+      });
+    });
+  </script>
+</head>
+
+<body>
+<h1>Method Namer</h1>
+<h2>Can't think of a good method name?  Try this:</h2>
+<div class="codeblock" style="height: 150px">
+
+</div>
+
+<select id="generatorType">
+  <option value="horrible">My First Method Naming style</option>
+  <option value="spring">Spring Framework style</option>
+  <option value="jdk">JDK style</option>
+</select>
+
+<button id="generateName">Generate Name</button>
+
+<br />
+<hr />
+<p style='text-align: center'>Idea inspired by <a href="http://www.classnamer.com/">classnamer.com</a> and a tweet from <a href="http://twitter.com/#!/mfeathers">Michael Feathers</a>.  Contact <!-- hassle? --> me at <a href="http://www.fatvat.co.uk/">my blog</a></p>
+</body> </html>
